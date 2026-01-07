@@ -1,8 +1,11 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('biblioteca_orm', 'postgres','210904', {
-    host: 'localhost',
-    dialect: 'postgres',
-    port: 5432
+const dotenv = require("dotenv");
+dotenv.config();
+
+const sequelize = new Sequelize(process.env.DB_NAME,process.env.DB_USER,process.env.DB_PASSWORD,{
+    host:process.env.DB_HOST,
+    dialect:'mysql',
+    port: process.env.DB_PORT
 });
 
 module.exports = { DataTypes, sequelize };
